@@ -1,45 +1,50 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
-const PACKAGE = require('../package.json');
-const version = PACKAGE.version.split('.').splice(0, 2).join('.');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+const PACKAGE = require("../package.json");
+const version = PACKAGE.version.split(".").splice(0, 2).join(".");
 
 module.exports = {
-  mode: 'development',
-  entry: './src/index.ts',
-  devtool: 'inline-source-map',
+  mode: "development",
+  entry: "./src/index.ts",
+  devtool: "inline-source-map",
   output: {
     filename: `${PACKAGE.name}.${version}.js`,
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, "../dist"),
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: "ts-loader",
         exclude: /node_modules/,
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.css|\.s[ac]ss$/i,
         use: [
-          {
-            loader: 'lit-scss-loader',
-            options: {
-              minify: true, // defaults to false
-            },
-          },
-          'extract-loader',
-          // Translates CSS into CommonJS
-          "css-loader",
+          "lit-css-loader",
           // Compiles Sass to CSS
-          "sass-loader"
+          "sass-loader",
         ],
+      },
+      {
+        test: /\.(svg)$/,
+        loader: "file-loader",
+        options: {
+          name: "icons/[name].[ext]",
+        },
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: ["file-loader"],
       },
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: [".tsx", ".ts", ".js"],
   },
-  plugins: [new HtmlWebpackPlugin({
-      template: './index.html'
-  })],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./index.html",
+    }),
+  ],
 };
