@@ -1,0 +1,8 @@
+npm install lit 
+
+npm install -D css-loader extract-loader html-webpack-plugin lit-scss-loader node-sass sass-loader style-loader ts-loader tslib typescript webpack webpack-cli webpack-dev-server rimraf
+
+npm install -D jest ts-jest @types/jest @open-wc/testing ts-node babel-jest @babel/core @babel/preset-env jest-scss-transform
+
+npx jest --init
+
