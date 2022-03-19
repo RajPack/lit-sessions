@@ -19,23 +19,43 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css|\.s[ac]ss$/i,
+        test: /\.((c|sa|sc)ss)$/i,
+        exclude: /((global).((c|sa|sc)ss))$/i,
         use: [
-          "lit-css-loader",
-          // Compiles Sass to CSS
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+              exportType: "css-style-sheet",
+            },
+          },
+          // Can be `less-loader`
           "sass-loader",
         ],
       },
       {
-        test: /\.(svg)$/,
-        loader: "file-loader",
-        options: {
-          name: "icons/[name].[ext]",
-        },
+        test: /((global).((c|sa|sc)ss))$/i,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+              exportType: "array",
+            },
+          },
+          // Can be `less-loader`
+          "sass-loader",
+        ],
+      },
+      // For webpack v5
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ["file-loader"],
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
       },
     ],
   },

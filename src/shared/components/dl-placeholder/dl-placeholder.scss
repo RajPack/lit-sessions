@@ -1,0 +1,28 @@
+.placeholder-container {
+    position: relative;
+    ::before{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        width: 100%;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0) 46%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0) 54%) 50% 50%;
+        -webkit-animation: placeholderAnimation 0.8s linear infinite;
+        animation: placeholderAnimation 0.8s linear infinite;
+        content: " ";
+        pointer-events: none;
+    }
+    ::slotted(*) {
+        background: #ced4da;
+    }
+}
+
+@keyframes placeholderAnimation {
+    0% {
+      transform: translate3d(-50%, 0, 0);
+    }
+    100% {
+      transform: translate3d(50%, 0, 0);
+    }
+  }
