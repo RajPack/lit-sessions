@@ -2,7 +2,7 @@ import { TodoItem } from "src/todo-app/interfaces/todo-item";
 
 export const todoListMock: TodoItem[] = [
     {
-        text: 'Get Home work done',
+        text: 'Learn Javascript',
         isComplete: false
     },
     {
