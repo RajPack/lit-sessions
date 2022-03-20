@@ -3,4 +3,4 @@ export * from './todo-app'
 
 
 // All Global styles (all level) goes here
-import '../styles/font-awesome.global.scss'
+import '../styles/styles.global.scss'

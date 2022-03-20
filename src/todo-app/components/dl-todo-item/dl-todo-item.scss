@@ -1,0 +1,11 @@
+.todo-item {
+    height: 60px;
+    width: 100%;
+    .fa-trash-can {
+        cursor: pointer;
+        &:hover{
+            transform: scale(1.2);
+        }
+    }
+}
+
