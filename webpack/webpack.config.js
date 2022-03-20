@@ -22,13 +22,7 @@ module.exports = {
         test: /\.((c|sa|sc)ss)$/i,
         exclude: /((global).((c|sa|sc)ss))$/i,
         use: [
-          {
-            loader: "css-loader",
-            options: {
-              importLoaders: 1,
-              exportType: "css-style-sheet",
-            },
-          },
+          "lit-css-loader",
           // Can be `less-loader`
           "sass-loader",
         ],
@@ -41,8 +35,7 @@ module.exports = {
             loader: "css-loader",
             options: {
               importLoaders: 1,
-              exportType: "array",
-            },
+            }
           },
           // Can be `less-loader`
           "sass-loader",

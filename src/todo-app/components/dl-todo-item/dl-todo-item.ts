@@ -36,7 +36,7 @@ export class DlTodoItem extends LitElement {
       return html``;
     }
 
-    const bgClass= this.markedForDelete ? 'bg-danger' : 'bg-light'
+    const bgClass= this.markedForDelete ? 'bg-warning' : 'bg-light'
     return html`<div
       class="todo-item border rounded d-flex justify-content-between align-items-center shadow-sm my-4 px-4 py-2 ${bgClass}"
     >
